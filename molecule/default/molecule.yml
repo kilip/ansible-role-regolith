@@ -1,0 +1,30 @@
+---
+dependency:
+  name: galaxy
+
+driver:
+  name: docker
+
+platforms:
+  - name: ansible-role-regolith
+    image: kilip/molecule-${MOLECULE_DISTRO:-ubuntu-22.04}:latest
+    pre_build_image: true
+    privileged: true
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+
+provisioner:
+  name: ansible
+  config_options:
+    defaults:
+      remote_tmp: /tmp/ansible-${USER}
+      # verbosity: 3
+  playbooks:
+    converge: converge.yml
+
+lint: |
+  set -e
+  ansible-lint
+
+verifier:
+  name: testinfra

@@ -1,0 +1,6 @@
+skip_list:
+  - yaml
+  - role-name
+  - fqcn-builtins
+  - risky-file-permissions
+  - deprecated-local-action

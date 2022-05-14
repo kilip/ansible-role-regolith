@@ -1,0 +1,24 @@
+---
+galaxy_info:
+  author: Anthonius Munthi
+  namespace: kilip
+  role_name: regolith
+  description: Install and configure Regolith linux
+  license: MIT
+  min_ansible_version: 2.1
+  platforms:
+    - name: Ubuntu
+      versions:
+        - jammy
+        - focal
+        - bionic
+    - name: Debian
+      versions:
+        - 12
+        - 11
+        - 10
+
+  galaxy_tags:
+    - workstation
+
+dependencies: []
