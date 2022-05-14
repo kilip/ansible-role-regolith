@@ -6,7 +6,7 @@
 
 - name: regolith ~> configure apt-repository for {{ ansible_distribution }} {{ ansible_distribution_release }}
   apt_repository:
-    repo: "deb [arch=amd64] https://regolith-release-{{ ansible_distribution|lower }}-{{ ansible_distribution_release}}-amd64.s3.amazonaws.com {{ ansible_distribution_release }} main"
+    repo: "deb [arch=amd64] https://regolith-release-{{ ansible_distribution|lower }}-{{ ansible_distribution_release }}-amd64.s3.amazonaws.com {{ ansible_distribution_release }} main"
     state: present
     filename: regolith
     update_cache: true
