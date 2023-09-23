@@ -1,2 +1,6 @@
 ---
 # defaults file for regolith
+regolith_ubuntu_packages:
+  - regolith-desktop
+  - regolith-session-flashback
+  - regolith-look-lascaille
