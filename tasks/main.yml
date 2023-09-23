@@ -1,2 +1,26 @@
 ---
-# tasks file for regolith
+# wget -qO - https://regolith-desktop.org/regolith.key | \
+# gpg --dearmor | sudo tee /usr/share/keyrings/regolith-archive-keyring.gpg > /dev/null
+- name: Ensure keys loaded
+  ansible.builtin.get_url:
+    url: https://regolith-desktop.org/regolith.key
+    dest: "/etc/apt/trusted.gpg.d/regolith.asc"
+
+- name: Ensure repository configured
+  ansible.builtin.apt_repository:
+    repo: deb [arch=amd64 signed-by="/etc/apt/trusted.gpg.d/regolith.asc"] https://regolith-desktop.org/release-3_0-{{ ansible_distribution|lower }}-{{ ansible_distribution_release }}-amd64 {{ ansible_distribution_release }} main
+    state: present
+    filename: regolith
+    update_cache: true
+
+- name: Ensure cache updated
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 600
+  when: ansible_os_family == 'Debian'
+
+- name: Ensure regolith installed
+  ansible.builtin.package:
+    name: "{{ regolith_ubuntu_packages }}"
+    state: present
+  when: ansible_distribution == "Ubuntu" or ansible_distribution_release == 'bookworm'
