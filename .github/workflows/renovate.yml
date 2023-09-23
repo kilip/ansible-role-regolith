@@ -1,0 +1,34 @@
+---
+name: Schedule - Renovate
+
+on:
+  workflow_dispatch:
+    inputs:
+      dryRun:
+        description: "Dry-Run"
+        default: false
+        required: false
+        type: boolean
+      logLevel:
+        description: "Log-Level"
+        default: "error"
+        required: false
+  schedule:
+    - cron: "0 * * * *"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/renovate.json5"
+      - ".github/renovate/**.json"
+      - ".github/renovate/**.json5"
+      - ".github/workflows/renovate.yaml"
+jobs:
+  renovate:
+    name: Renovate
+    uses: kilip/gh-common/.github/workflows/run-renovate.yaml@main
+    with:
+      configurationFile: ".github/renovate.json5"
+      dryRun: "${{ inputs.dryRun || 'false' }}"
+      renovateLogLevel: "${{ inputs.logLevel || 'error' }}"
+    secrets: inherit

@@ -1,0 +1,23 @@
+---
+galaxy_info:
+  namespace: kilip
+  role_name: regolith
+  author: Anthonius Munthi
+  description: Ansible role regolith
+  issue_tracker_url: https://github.com/https://github.com/kilip/ansible-role-regolith/issues
+
+  license: MIT
+
+  min_ansible_version: 2.10
+  github_branch: main
+  platforms:
+    - name: Ubuntu
+      versions:
+        - jammy
+    - name: Debian
+      versions:
+        - bookworm
+
+  galaxy_tags: []
+
+dependencies: []

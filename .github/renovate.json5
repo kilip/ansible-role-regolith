@@ -1,0 +1,8 @@
+{
+  extends: [
+    "github>kilip/renovate-config",
+    "github>kilip/renovate-config:automerge-github-actions",
+  ],
+  "repositories": ["kilip/ansible-role-regolith"],
+  "baseBranches": ["main"]
+}

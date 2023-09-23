@@ -1,0 +1,14 @@
+---
+name: Testing
+
+on:  # yamllint disable-line rule:truthy
+  pull_request:
+  push:
+    branches: ["main"]
+
+jobs:
+  testing:
+    uses: kilip/gh-common/.github/workflows/ansible-testing.yml@main
+    with:
+      dists: ubuntu-22.04
+    secrets: inherit
