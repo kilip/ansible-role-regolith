@@ -4,3 +4,8 @@ regolith_ubuntu_packages:
   - regolith-desktop
   - regolith-session-sway
   - regolith-look-dracula
+
+regolith_debian_packages:
+  - regolith-desktop
+  - regolith-session-flashback
+  - regolith-look-dracula

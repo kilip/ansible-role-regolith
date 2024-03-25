@@ -21,6 +21,6 @@
 
 - name: Ensure regolith installed
   ansible.builtin.package:
-    name: "{{ regolith_ubuntu_packages }}"
+    name: "{{ regolith_ubuntu_packages if ansible_distribution == 'Ubuntu' else regolith-debian-packages }}"
     state: present
-  when: ansible_distribution == "Ubuntu" or ansible_distribution_release == 'bookworm'
+  when: ansible_distribution == "Ubuntu"  or ansible_distribution_release == 'bookworm'
