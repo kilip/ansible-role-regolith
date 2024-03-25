@@ -1,6 +1,4 @@
 ---
-# wget -qO - https://regolith-desktop.org/regolith.key | \
-# gpg --dearmor | sudo tee /usr/share/keyrings/regolith-archive-keyring.gpg > /dev/null
 - name: Ensure keys loaded
   ansible.builtin.get_url:
     url: https://regolith-desktop.org/regolith.key
@@ -21,6 +19,6 @@
 
 - name: Ensure regolith installed
   ansible.builtin.package:
-    name: "{{ regolith_ubuntu_packages if ansible_distribution == 'Ubuntu' else regolith-debian-packages }}"
+    name: "{{ regolith_ubuntu_packages if ansible_distribution == 'Ubuntu' else regolith_debian_packages }}"
     state: present
   when: ansible_distribution == "Ubuntu"  or ansible_distribution_release == 'bookworm'
