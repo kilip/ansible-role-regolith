@@ -6,7 +6,7 @@
 
 - name: Ensure repository configured
   ansible.builtin.apt_repository:
-    repo: deb [arch=amd64 signed-by="/etc/apt/trusted.gpg.d/regolith.asc"] https://regolith-desktop.org/release-3_1-{{ ansible_distribution|lower }}-{{ ansible_distribution_release }}-amd64 {{ ansible_distribution_release }} main
+    repo: deb [arch=amd64 signed-by="/etc/apt/trusted.gpg.d/regolith.asc"] https://regolith-desktop.org/release-3_2-{{ ansible_distribution|lower }}-{{ ansible_distribution_release }}-amd64 {{ ansible_distribution_release }} main
     state: present
     filename: regolith
     update_cache: true
